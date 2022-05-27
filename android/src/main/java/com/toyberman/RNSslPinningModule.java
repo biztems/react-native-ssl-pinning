@@ -176,7 +176,7 @@ public class RNSslPinningModule extends ReactContextBaseJavaModule {
             domainName = hostname;
         }
         if (options.hasKey(DISABLE_ALL_SECURITY) && options.getBoolean(DISABLE_ALL_SECURITY)) {
-            client = OkHttpUtils.getUnsafeOkHttpClient();
+            client = OkHttpUtils.getUnsafeOkHttpClient(cookieJar);
         }
         // With ssl pinning
         else if (options.hasKey(OPT_SSL_PINNING_KEY)) {

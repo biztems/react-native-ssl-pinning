@@ -115,7 +115,7 @@ public class OkHttpUtils {
 
     }
 
-  public static OkHttpClient getUnsafeOkHttpClient() {
+  public static OkHttpClient getUnsafeOkHttpClient(CookieJar cookieJar) {
     try {
       // Create a trust manager that does not validate certificate chains
       final TrustManager[] trustAllCerts = new TrustManager[] {
@@ -149,6 +149,7 @@ public class OkHttpUtils {
           return true;
         }
       });
+      builder.cookieJar(cookieJar);
 
       OkHttpClient okHttpClient = builder.build();
       return okHttpClient;
